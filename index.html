@@ -7,368 +7,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1a1814;
-    --ink-soft: #4a4640;
-    --ink-muted: #9a9490;
-    --paper: #faf8f4;
-    --paper-warm: #f2ede4;
-    --paper-card: #ffffff;
-    --accent: #c8521a;
-    --accent-soft: #f0e0d4;
-    --accent-2: #1a6b8a;
-    --accent-3: #7a6b2a;
-    --border: #e0dbd2;
-    --radius: 4px;
+    --ink: #1a1814; --ink-soft: #4a4640; --ink-muted: #9a9490;
+    --paper: #faf8f4; --paper-warm: #f2ede4; --paper-card: #ffffff;
+    --accent: #c8521a; --accent-soft: #f0e0d4; --accent-2: #1a6b8a; --accent-3: #7a6b2a;
+    --border: #e0dbd2; --radius: 4px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Noto Sans TC', sans-serif; font-weight: 300; min-height: 100vh; line-height: 1.8; }
 
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Noto Sans TC', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    line-height: 1.8;
-  }
+  .site-header { border-bottom: 1px solid var(--border); padding: 2rem 0 1.5rem; text-align: center; position: relative; overflow: hidden; }
+  .site-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3)); }
+  .site-header h1 { font-family: 'Noto Serif TC', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 600; letter-spacing: 0.1em; }
+  .site-header p { margin-top: 0.5rem; font-size: 0.85rem; color: var(--ink-muted); letter-spacing: 0.05em; }
 
-  /* Header */
-  .site-header {
-    border-bottom: 1px solid var(--border);
-    padding: 2rem 0 1.5rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .site-header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
-  }
-  .site-header h1 {
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: var(--ink);
-  }
-  .site-header p {
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    color: var(--ink-muted);
-    letter-spacing: 0.05em;
-  }
+  .main-layout { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+  @media (max-width: 760px) { .main-layout { grid-template-columns: 1fr; } }
 
-  /* Layout */
-  .main-layout {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2.5rem 1.5rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  @media (max-width: 760px) {
-    .main-layout { grid-template-columns: 1fr; }
-  }
-
-  /* Form Panel */
-  .form-panel {
-    background: var(--paper-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-
-  .panel-header {
-    background: var(--paper-warm);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .panel-num {
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.7rem; font-weight: 500;
-    flex-shrink: 0;
-  }
+  .form-panel { background: var(--paper-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 1.25rem; }
+  .panel-header { background: var(--paper-warm); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .panel-num { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 500; flex-shrink: 0; }
   .num-1 { background: var(--accent); color: white; }
   .num-2 { background: var(--accent-2); color: white; }
   .num-3 { background: var(--accent-3); color: white; }
-
-  .panel-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .panel-subtitle {
-    font-size: 0.75rem;
-    color: var(--ink-muted);
-    margin-top: 1px;
-  }
-
+  .panel-title { font-family: 'Noto Serif TC', serif; font-size: 1rem; font-weight: 600; }
+  .panel-subtitle { font-size: 0.75rem; color: var(--ink-muted); margin-top: 1px; }
   .panel-body { padding: 1.25rem 1.5rem; }
 
   .field { margin-bottom: 1rem; }
   .field:last-child { margin-bottom: 0; }
-
-  label {
-    display: block;
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--ink-soft);
-    margin-bottom: 0.4rem;
-    letter-spacing: 0.03em;
-  }
-  .hint {
-    font-size: 0.72rem;
-    color: var(--ink-muted);
-    margin-bottom: 0.4rem;
-    display: block;
-  }
-
-  input[type=text], textarea {
-    width: 100%;
-    padding: 0.55rem 0.8rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--ink);
-    background: var(--paper);
-    transition: border-color 0.2s;
-    line-height: 1.6;
-  }
-  input[type=text]:focus, textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-    background: white;
-  }
+  label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--ink-soft); margin-bottom: 0.4rem; letter-spacing: 0.03em; }
+  .hint { font-size: 0.72rem; color: var(--ink-muted); margin-bottom: 0.4rem; display: block; }
+  input[type=text], textarea { width: 100%; padding: 0.55rem 0.8rem; border: 1px solid var(--border); border-radius: var(--radius); font-family: 'Noto Sans TC', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--ink); background: var(--paper); transition: border-color 0.2s; line-height: 1.6; }
+  input[type=text]:focus, textarea:focus { outline: none; border-color: var(--accent); background: white; }
   textarea { resize: vertical; }
 
-  .section-divider {
-    border: none;
-    border-top: 1px dashed var(--border);
-    margin: 1.5rem 0;
-  }
+  .exp-block { background: var(--paper-warm); border-radius: var(--radius); padding: 1rem; margin-bottom: 0.75rem; border: 1px solid var(--border); }
+  .exp-block-title { font-size: 0.75rem; font-weight: 500; color: var(--ink-muted); margin-bottom: 0.75rem; letter-spacing: 0.05em; }
 
-  .exp-block {
-    background: var(--paper-warm);
-    border-radius: var(--radius);
-    padding: 1rem;
-    margin-bottom: 0.75rem;
-    border: 1px solid var(--border);
-  }
-  .exp-block-title {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--ink-muted);
-    margin-bottom: 0.75rem;
-    letter-spacing: 0.05em;
-  }
-
-  /* Output Panel */
-  .output-panel {
-    position: sticky;
-    top: 1.5rem;
-  }
-
-  .preview-card {
-    background: var(--paper-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin-bottom: 1rem;
-  }
-  .preview-header {
-    background: var(--ink);
-    padding: 0.75rem 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .preview-header span {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.6);
-    letter-spacing: 0.08em;
-  }
-  .preview-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-
-  .preview-body {
-    padding: 1.5rem;
-    min-height: 220px;
-  }
-
-  .preview-section {
-    margin-bottom: 1.25rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--border);
-    animation: fadeIn 0.3s ease;
-  }
-  .preview-section:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0.4; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .preview-tag {
-    display: inline-block;
-    font-size: 0.68rem;
-    font-weight: 500;
-    padding: 2px 8px;
-    border-radius: 2px;
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.05em;
-  }
+  .output-panel { position: sticky; top: 1.5rem; }
+  .preview-card { background: var(--paper-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 1rem; }
+  .preview-header { background: var(--ink); padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+  .preview-header span { font-size: 0.75rem; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; }
+  .preview-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .preview-body { padding: 1.5rem; min-height: 220px; }
+  .preview-section { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); animation: fadeIn 0.25s ease; }
+  .preview-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  @keyframes fadeIn { from { opacity: 0.4; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+  .preview-tag { display: inline-block; font-size: 0.68rem; font-weight: 500; padding: 2px 8px; border-radius: 2px; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
   .tag-1 { background: var(--accent-soft); color: var(--accent); }
   .tag-2 { background: #d4eaf2; color: var(--accent-2); }
   .tag-3 { background: #ede8d4; color: var(--accent-3); }
+  .preview-text { font-size: 0.9rem; line-height: 1.9; color: var(--ink); }
+  .preview-placeholder { font-size: 0.85rem; color: var(--ink-muted); font-style: italic; text-align: center; padding: 2rem 0; }
 
-  .preview-text {
-    font-size: 0.9rem;
-    line-height: 1.85;
-    color: var(--ink);
-  }
-  .preview-text strong {
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .preview-placeholder {
-    font-size: 0.85rem;
-    color: var(--ink-muted);
-    font-style: italic;
-    text-align: center;
-    padding: 2rem 0;
-  }
-
-  /* Script panel */
-  .script-card {
-    background: var(--paper-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-  .script-header {
-    padding: 0.75rem 1.25rem;
-    background: var(--paper-warm);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .script-header-text {
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--ink-soft);
-    letter-spacing: 0.05em;
-  }
-  .copy-btn {
-    background: var(--ink);
-    color: white;
-    border: none;
-    padding: 0.35rem 0.9rem;
-    border-radius: var(--radius);
-    font-size: 0.75rem;
-    font-family: 'Noto Sans TC', sans-serif;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    transition: background 0.2s, transform 0.1s;
-  }
+  .script-card { background: var(--paper-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .script-header { padding: 0.75rem 1.25rem; background: var(--paper-warm); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .script-header-text { font-size: 0.78rem; font-weight: 500; color: var(--ink-soft); letter-spacing: 0.05em; }
+  .copy-btn { background: var(--ink); color: white; border: none; padding: 0.35rem 0.9rem; border-radius: var(--radius); font-size: 0.75rem; font-family: 'Noto Sans TC', sans-serif; cursor: pointer; letter-spacing: 0.05em; transition: background 0.2s, transform 0.1s; }
   .copy-btn:hover { background: var(--accent); }
   .copy-btn:active { transform: scale(0.97); }
   .copy-btn.copied { background: #2d8a4e; }
+  .script-body { padding: 1.25rem; font-size: 0.85rem; line-height: 1.9; color: var(--ink-soft); min-height: 80px; white-space: pre-wrap; word-break: break-all; }
 
-  .script-body {
-    padding: 1.25rem;
-    font-size: 0.85rem;
-    line-height: 1.9;
-    color: var(--ink-soft);
-    min-height: 100px;
-    white-space: pre-wrap;
-    word-break: break-all;
-  }
-
-  /* Tips */
-  .tips-row {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
-    flex-wrap: wrap;
-  }
-  .tip-pill {
-    font-size: 0.7rem;
-    padding: 3px 10px;
-    border-radius: 20px;
-    background: var(--paper-warm);
-    border: 1px solid var(--border);
-    color: var(--ink-muted);
-  }
-
-  .generate-btn {
-    width: 100%;
-    padding: 0.75rem;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: var(--radius);
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-    margin-top: 1.25rem;
-  }
-  .generate-btn:hover { background: #a84015; }
-  .generate-btn:active { transform: scale(0.98); }
-  .generate-btn:disabled { background: var(--ink-muted); cursor: not-allowed; transform: none; }
-
-  .loading-bar {
-    height: 2px;
-    background: var(--border);
-    border-radius: 2px;
-    margin-top: 0.75rem;
-    overflow: hidden;
-    display: none;
-  }
-  .loading-bar.active { display: block; }
-  .loading-bar-inner {
-    height: 100%;
-    width: 0%;
-    background: var(--accent);
-    animation: loadSlide 1.8s ease-in-out infinite;
-  }
-  @keyframes loadSlide {
-    0% { width: 0%; margin-left: 0%; }
-    50% { width: 60%; margin-left: 20%; }
-    100% { width: 0%; margin-left: 100%; }
-  }
-
-  .streaming-cursor::after {
-    content: '▍';
-    animation: blink 0.8s step-end infinite;
-    color: var(--accent);
-    font-size: 0.8em;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
+  .tips-row { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
+  .tip-pill { font-size: 0.7rem; padding: 3px 10px; border-radius: 20px; background: var(--paper-warm); border: 1px solid var(--border); color: var(--ink-muted); }
 </style>
 </head>
 <body>
@@ -379,121 +81,57 @@
 </header>
 
 <div class="main-layout">
-
-  <!-- LEFT: Form -->
   <div>
-
-    <!-- Section 1 -->
-    <div class="form-panel" style="margin-bottom:1.25rem">
+    <div class="form-panel">
       <div class="panel-header">
         <div class="panel-num num-1">一</div>
-        <div>
-          <div class="panel-title">我是誰</div>
-          <div class="panel-subtitle">核心身份與能力關鍵字</div>
-        </div>
+        <div><div class="panel-title">我是誰</div><div class="panel-subtitle">核心身份與能力關鍵字</div></div>
       </div>
       <div class="panel-body">
-        <div class="field">
-          <label>你的名字</label>
-          <input type="text" id="name" placeholder="例：Mia、志偉">
-        </div>
-        <div class="field">
-          <label>學歷背景（可選）</label>
-          <input type="text" id="edu" placeholder="例：政大廣告所畢業">
-        </div>
-        <div class="field">
-          <label>職稱 + 年資</label>
-          <span class="hint">用最精簡的方式點出你的身份</span>
-          <input type="text" id="role" placeholder="例：行銷企劃三年、產品經理五年">
-        </div>
-        <div class="field">
-          <label>核心能力 2–3 個</label>
-          <span class="hint">不用展開，點到為止</span>
-          <input type="text" id="skills" placeholder="例：擅長品牌溝通策略，整合線上線下活動執行">
-        </div>
+        <div class="field"><label>你的名字</label><input type="text" id="name" placeholder="例：Mia、志偉"></div>
+        <div class="field"><label>學歷背景（可選）</label><input type="text" id="edu" placeholder="例：政大廣告所畢業"></div>
+        <div class="field"><label>職稱 + 年資</label><span class="hint">用最精簡的方式點出你的身份</span><input type="text" id="role" placeholder="例：行銷企劃三年、產品經理五年"></div>
+        <div class="field"><label>核心能力 2–3 個</label><span class="hint">不用展開，點到為止</span><input type="text" id="skills" placeholder="例：擅長品牌溝通策略，熟悉整合線上線下活動執行"></div>
       </div>
     </div>
 
-    <!-- Section 2 -->
-    <div class="form-panel" style="margin-bottom:1.25rem">
+    <div class="form-panel">
       <div class="panel-header">
         <div class="panel-num num-2">二</div>
-        <div>
-          <div class="panel-title">我做過什麼</div>
-          <div class="panel-subtitle">近期經歷倒敘，每份說兩件事</div>
-        </div>
+        <div><div class="panel-title">我做過什麼</div><div class="panel-subtitle">近期經歷倒敘，每份說兩件事</div></div>
       </div>
       <div class="panel-body">
         <div class="exp-block">
-          <div class="exp-block-title">最近一份 / 現職</div>
-          <div class="field">
-            <label>公司 + 職稱</label>
-            <input type="text" id="exp1-role" placeholder="例：A 品牌 行銷企劃主任">
-          </div>
-          <div class="field">
-            <label>負責範圍</label>
-            <input type="text" id="exp1-scope" placeholder="例：年度品牌活動與社群內容策略">
-          </div>
-          <div class="field">
-            <label>最代表性的成果</label>
-            <input type="text" id="exp1-result" placeholder="例：主導全台線下快閃，單週觸及破 50 萬人次">
-          </div>
+          <div class="exp-block-title">現職 / 最近一份</div>
+          <div class="field"><label>公司 + 職稱</label><input type="text" id="e1r" placeholder="例：A 品牌 行銷企劃主任"></div>
+          <div class="field"><label>負責範圍</label><input type="text" id="e1s" placeholder="例：年度品牌活動與社群內容策略"></div>
+          <div class="field"><label>最代表性的成果</label><input type="text" id="e1x" placeholder="例：主導全台快閃活動，單週觸及破 50 萬人次"></div>
         </div>
         <div class="exp-block">
           <div class="exp-block-title">前一份（可選）</div>
-          <div class="field">
-            <label>公司 + 職稱</label>
-            <input type="text" id="exp2-role" placeholder="例：B 新創 成長行銷">
-          </div>
-          <div class="field">
-            <label>最代表性的成果</label>
-            <input type="text" id="exp2-result" placeholder="例：三個月讓 IG 粉絲從 5000 長到 3 萬">
-          </div>
+          <div class="field"><label>公司 + 職稱</label><input type="text" id="e2r" placeholder="例：B 新創 成長行銷"></div>
+          <div class="field"><label>最代表性的成果</label><input type="text" id="e2x" placeholder="例：三個月讓 IG 粉絲從 5000 長到 3 萬"></div>
         </div>
       </div>
     </div>
 
-    <!-- Section 3 -->
-    <div class="form-panel">
+    <div class="form-panel" style="margin-bottom:0">
       <div class="panel-header">
         <div class="panel-num num-3">三</div>
-        <div>
-          <div class="panel-title">為什麼在這裡</div>
-          <div class="panel-subtitle">方向 + 為什麼這個機會符合你</div>
-        </div>
+        <div><div class="panel-title">為什麼在這裡</div><div class="panel-subtitle">方向 + 為什麼這個機會符合你</div></div>
       </div>
       <div class="panel-body">
-        <div class="field">
-          <label>你在找什麼樣的環境或方向</label>
-          <span class="hint">說你想去哪，而不是逃離哪</span>
-          <input type="text" id="direction" placeholder="例：能更深入做品牌定位與長期策略的環境">
-        </div>
-        <div class="field">
-          <label>這個機會為什麼符合你的方向</label>
-          <span class="hint">要具體，不要說「貴公司很優秀」</span>
-          <textarea id="fit" rows="3" placeholder="例：看到貴公司正在重新定義產品在東南亞市場的形象，這種需要從品牌底層思考的機會，正是我想做的事"></textarea>
-        </div>
+        <div class="field"><label>你在找什麼樣的環境或方向</label><span class="hint">說你想去哪，而不是逃離哪</span><input type="text" id="dir" placeholder="例：能更深入做品牌定位與長期策略的環境"></div>
+        <div class="field"><label>這個機會為什麼符合你的方向</label><span class="hint">要具體，不要說「貴公司很優秀」</span><textarea id="fit" rows="3" placeholder="例：看到貴公司正在重新定義東南亞市場的品牌形象，這種需要從品牌底層思考的機會，正是我想做的事"></textarea></div>
       </div>
     </div>
-
-    <button class="generate-btn" id="generate-btn" onclick="generate()">產生自我介紹</button>
-    <div class="loading-bar" id="loading-bar"><div class="loading-bar-inner"></div></div>
-
   </div>
 
-  <!-- RIGHT: Output -->
   <div class="output-panel">
-
     <div class="preview-card">
-      <div class="preview-header">
-        <span>即時預覽</span>
-        <div class="preview-dot"></div>
-      </div>
-      <div class="preview-body" id="preview-body">
-        <div class="preview-placeholder">填入左側資料，自我介紹即時呈現</div>
-      </div>
+      <div class="preview-header"><span>即時預覽</span><div class="preview-dot"></div></div>
+      <div class="preview-body" id="preview-body"><div class="preview-placeholder">填入左側資料，自我介紹即時呈現</div></div>
     </div>
-
     <div class="script-card">
       <div class="script-header">
         <span class="script-header-text">完整文字稿</span>
@@ -501,132 +139,93 @@
       </div>
       <div class="script-body" id="script-body">—</div>
     </div>
-
     <div class="tips-row">
       <span class="tip-pill">說完就停，讓對方問</span>
       <span class="tip-pill">成果要具體有數字</span>
       <span class="tip-pill">第三段說方向不說逃離</span>
     </div>
-
   </div>
 </div>
 
 <script>
-  function g(id) { return (document.getElementById(id)?.value || '').trim(); }
+['name','edu','role','skills','e1r','e1s','e1x','e2r','e2x','dir','fit']
+  .forEach(id => document.getElementById(id).addEventListener('input', update));
 
-  function escHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function g(id) { return (document.getElementById(id)?.value || '').trim(); }
+function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function p(s) { return s && !/[。！？]$/.test(s) ? s + '。' : s; }
+
+function buildP1() {
+  const name = g('name'), edu = g('edu'), role = g('role'), skills = g('skills');
+  if (!name && !role && !skills) return '';
+  let s = '面試官好，我是' + (name || '___');
+  if (edu) s += '，' + edu;
+  s = p(s);
+  if (role && skills) s += '有' + role + '的經驗，' + p(skills);
+  else if (role) s += p('有' + role + '的經驗');
+  else if (skills) s += p(skills);
+  return '「' + s + '」';
+}
+
+function buildP2() {
+  const e1r = g('e1r'), e1s = g('e1s'), e1x = g('e1x'), e2r = g('e2r'), e2x = g('e2x');
+  if (!e1r && !e1s && !e1x) return '';
+  let s = '';
+  if (e1r) {
+    s += '目前在' + e1r;
+    if (e1s && e1x) s += '，主要負責' + p(e1s) + '其中最有代表性的是' + p(e1x);
+    else if (e1s) s += '，負責' + p(e1s);
+    else if (e1x) s += '，做過最有代表性的是' + p(e1x);
+    else s = p(s);
+  }
+  if (e2r) {
+    s += '在這之前在' + e2r;
+    s += e2x ? '，' + p(e2x) : '。';
+  }
+  return '「' + s + '」';
+}
+
+function buildP3() {
+  const dir = g('dir'), fit = g('fit');
+  if (!dir && !fit) return '';
+  let s = '';
+  if (dir && fit) s = '我目前在找' + dir + '的機會。' + p(fit);
+  else if (dir) s = p('我目前在找' + dir);
+  else s = p(fit);
+  return '「' + s + '」';
+}
+
+function update() {
+  const sections = [
+    { tag: '第一段', cls: 'tag-1', text: buildP1() },
+    { tag: '第二段', cls: 'tag-2', text: buildP2() },
+    { tag: '第三段', cls: 'tag-3', text: buildP3() },
+  ].filter(s => s.text);
+
+  const preview = document.getElementById('preview-body');
+  const script = document.getElementById('script-body');
+
+  if (!sections.length) {
+    preview.innerHTML = '<div class="preview-placeholder">填入左側資料，自我介紹即時呈現</div>';
+    script.textContent = '—';
+    return;
   }
 
-  async function generate() {
-    const name = g('name'), edu = g('edu'), role = g('role'), skills = g('skills');
-    const exp1role = g('exp1-role'), exp1scope = g('exp1-scope'), exp1result = g('exp1-result');
-    const exp2role = g('exp2-role'), exp2result = g('exp2-result');
-    const direction = g('direction'), fit = g('fit');
+  preview.innerHTML = sections.map(s =>
+    `<div class="preview-section"><span class="preview-tag ${s.cls}">${s.tag}</span><p class="preview-text">${esc(s.text)}</p></div>`
+  ).join('');
+  script.textContent = sections.map(s => s.text).join('\n\n');
+}
 
-    if (!name && !role && !exp1role && !direction) {
-      alert('請至少填入名字、職稱或其中一段內容');
-      return;
-    }
-
-    const btn = document.getElementById('generate-btn');
-    const loadingBar = document.getElementById('loading-bar');
-    const preview = document.getElementById('preview-body');
-    const scriptBody = document.getElementById('script-body');
-
-    btn.disabled = true;
-    btn.textContent = '產生中…';
-    loadingBar.classList.add('active');
-    preview.innerHTML = '<div class="preview-placeholder streaming-cursor">正在組織你的自我介紹</div>';
-    scriptBody.textContent = '—';
-
-    const userInfo = [
-      name && `姓名：${name}`,
-      edu && `學歷：${edu}`,
-      role && `職稱／年資：${role}`,
-      skills && `核心能力：${skills}`,
-      exp1role && `現職公司職稱：${exp1role}`,
-      exp1scope && `現職負責範圍：${exp1scope}`,
-      exp1result && `現職代表成果：${exp1result}`,
-      exp2role && `前一份公司職稱：${exp2role}`,
-      exp2result && `前一份代表成果：${exp2result}`,
-      direction && `求職方向：${direction}`,
-      fit && `為什麼這個機會符合你：${fit}`,
-    ].filter(Boolean).join('\n');
-
-    const systemPrompt = `你是一位面試教練，專門幫助求職者把填寫的關鍵資料，組成流暢、自然、像真人在說話的自我介紹。
-
-請用三段結構產生繁體中文自我介紹：
-第一段：我是誰（身份、年資、核心能力，點到為止，不展開）
-第二段：我做過什麼（近期經歷倒敘，每份說範圍和成果，說完讓對方問）
-第三段：為什麼在這裡（方向 + 為什麼這機會符合）
-
-語氣要求：
-- 口語自然，像真人在面試現場說話，不是在唸履歷
-- 句子之間要有自然的連接和節奏，不是硬拼欄位
-- 適當使用「目前」「之前」「一直以來」等口語連接詞
-- 每段開頭不要重複「面試官好」
-- 整體約 150–250 字
-
-輸出格式（嚴格遵守）：
-用 JSON 格式回傳，只回傳 JSON，不要任何說明或 markdown：
-{"p1":"第一段內容","p2":"第二段內容","p3":"第三段內容"}`;
-
-    try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          system: systemPrompt,
-          messages: [{ role: 'user', content: `以下是求職者的資料，請幫他組成自然流暢的自我介紹：\n\n${userInfo}` }]
-        })
-      });
-
-      const data = await response.json();
-      const raw = data.content?.find(b => b.type === 'text')?.text || '';
-
-      let parsed;
-      try {
-        const clean = raw.replace(/```json|```/g, '').trim();
-        parsed = JSON.parse(clean);
-      } catch {
-        throw new Error('格式解析失敗');
-      }
-
-      const { p1 = '', p2 = '', p3 = '' } = parsed;
-
-      preview.innerHTML = [
-        p1 && `<div class="preview-section"><span class="preview-tag tag-1">第一段</span><p class="preview-text">${escHtml(p1)}</p></div>`,
-        p2 && `<div class="preview-section"><span class="preview-tag tag-2">第二段</span><p class="preview-text">${escHtml(p2)}</p></div>`,
-        p3 && `<div class="preview-section"><span class="preview-tag tag-3">第三段</span><p class="preview-text">${escHtml(p3)}</p></div>`,
-      ].filter(Boolean).join('');
-
-      scriptBody.textContent = [p1, p2, p3].filter(Boolean).join('\n\n');
-
-    } catch (err) {
-      preview.innerHTML = `<div class="preview-placeholder">發生錯誤：${escHtml(err.message)}，請再試一次</div>`;
-    } finally {
-      btn.disabled = false;
-      btn.textContent = '重新產生';
-      loadingBar.classList.remove('active');
-    }
-  }
-
-  function copyScript() {
-    const text = document.getElementById('script-body').textContent;
-    if (!text || text === '—') return;
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.getElementById('copy-btn');
-      btn.textContent = '已複製 ✓';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = '複製'; btn.classList.remove('copied'); }, 2000);
-    });
-  }
+function copyScript() {
+  const text = document.getElementById('script-body').textContent;
+  if (!text || text === '—') return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '已複製 ✓'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '複製'; btn.classList.remove('copied'); }, 2000);
+  });
+}
 </script>
 </body>
 </html>
-
-
-
