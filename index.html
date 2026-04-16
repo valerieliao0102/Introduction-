@@ -144,6 +144,8 @@
       <span class="tip-pill">成果要具體有數字</span>
       <span class="tip-pill">第三段說方向不說逃離</span>
     </div>
+    <button onclick="openClaude()" style="width:100%;margin-top:0.75rem;padding:0.7rem 1rem;background:white;color:var(--accent-2);border:1px solid var(--accent-2);border-radius:var(--radius);font-family:'Noto Sans TC',sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;letter-spacing:0.04em;transition:background 0.2s;">用 Claude AI 潤飾語氣 →</button>
+    <p style="font-size:0.7rem;color:var(--ink-muted);margin-top:0.4rem;text-align:center;">需要免費的 Claude 帳號・點擊後會開新分頁</p>
   </div>
 </div>
 
@@ -225,6 +227,13 @@ function copyScript() {
     btn.textContent = '已複製 ✓'; btn.classList.add('copied');
     setTimeout(() => { btn.textContent = '複製'; btn.classList.remove('copied'); }, 2000);
   });
+}
+
+function openClaude() {
+  const text = document.getElementById('script-body').textContent;
+  if (!text || text === '—') { alert('請先填入資料'); return; }
+  const prompt = '以下是我的自我介紹草稿，請幫我潤飾成更自然、像真人在面試現場說話的口語版本。保持三段結構，語氣自然不要像在唸履歷：\n\n' + text;
+  window.open('https://claude.ai/new?q=' + encodeURIComponent(prompt), '_blank');
 }
 </script>
 </body>
